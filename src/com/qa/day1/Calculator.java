@@ -15,9 +15,13 @@ public class Calculator {
 	}
 	
 	public static double div(int a, int b) {
-		double x = a;
-		double y = b;
-		return x / y;
+		if (a >= b) {
+			System.out.println("Cannot Perform Division. First input must be less than second");
+			return 0;
+		} else {
+			double x = a;
+			double y = b;
+			return x / y;			
+		}
 	}
-	
 }
