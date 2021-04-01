@@ -9,7 +9,6 @@ public class DecimalFormatter {
 	
 	public DecimalFormatter (String f) {
 		fmt = f;
-
 	}
 	
 	public String format(Double d) {

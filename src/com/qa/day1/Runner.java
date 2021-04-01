@@ -69,8 +69,8 @@ public class Runner {
 				s.close();
 				break;
 		}
-// Decimal Format block
-//		DecimalFormatter d = new DecimalFormatter(".######");
-//		System.out.println(d.format(2.45677435345));
+// Decimal Format block (extra task)
+		DecimalFormatter d = new DecimalFormatter(".######");
+		System.out.println(d.format(2.45677435345));
 	}
 }

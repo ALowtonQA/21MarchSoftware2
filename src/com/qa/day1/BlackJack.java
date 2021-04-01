@@ -1,14 +1,7 @@
 package com.qa.day1;
 
 public class BlackJack {
-	
-	public static void main(String[] args) {
-		System.out.println(play(10, 21));
-		System.out.println(play(22, 18));
-		System.out.println(play(1, 22));
-		System.out.println(play(22, 23));
-	}
-	
+		
 	public static int play(int a, int b) {
 		if (a <= 21 || b <= 21) {
 			int diffA = 21 - a;
