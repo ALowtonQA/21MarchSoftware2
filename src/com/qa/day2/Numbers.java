@@ -3,7 +3,7 @@ package com.qa.day2;
 public class Numbers {
 	
 	public static void main (String[] args) {
-		for (int i = 1; i <= 100; i++) {
+		for (int i = 1; i <= 1000; i++) {
 			System.out.println(method2(i));
 		}
 	}
@@ -24,8 +24,8 @@ public class Numbers {
 			return "";
 		}
 		
-		if (input > 999) {
-			System.out.println("ERROR: Input must be less than 999");
+		if (input > 9999) {
+			System.out.println("ERROR: Input must be less than 9999");
 			return "";
 		}
 		
@@ -44,18 +44,29 @@ public class Numbers {
 		    " sixty", " seventy", " eighty", " ninety"
 		};
 		
-		String word = "";
-		int n = input % 100;
+		String [] thousandCatch = {"", " thousand"};
 		
-		if (n < 10) {
-			word = word + units[n];
-		} else if (n < 20) {
-			word = word + teens[n%10];
-		} else {
-			word = tens[n/10] + units[n%10];
-		}
+		String finalWord = "";
+		int index = 0;
+		do {
+			int threeMax = input % 1000;
+			if (threeMax != 0) {
+				String word = "";
+				int n = threeMax % 100;
+				if (n < 10) {
+					word = word + units[n];
+				} else if (n < 20) {
+					word = word + teens[n%10];
+				} else {
+					word = tens[n/10] + units[n%10];
+				}
+				String temp = (threeMax/100 > 0)? units[threeMax/100] + " hundred" + word : word;
+				finalWord = temp + thousandCatch[index] + finalWord;
+			}
+			index++;
+			input = input/1000;
+		} while (input > 0);
 		
-		word = (input/100 > 0)? units[input/100] + " hundred" + word : word;
-		return word;
+		return finalWord;
 	}
 }
