@@ -14,11 +14,7 @@ public class DecimalFormatter {
 	public String format(Double d) {
 		Pattern pattern = Pattern.compile("[^#]*#");
 		Matcher matcher = pattern.matcher(fmt);
-		int count = 0;
-		while (matcher.find()) {
-			count++;
-		}
-		String output = String.format("%." + count + "f", d);
-		return output;
+		long count = matcher.results().count();
+		return String.format("%." + count + "f", d);
 	}
 }
