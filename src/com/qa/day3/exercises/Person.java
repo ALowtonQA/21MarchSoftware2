@@ -1,4 +1,4 @@
-package com.qa.exercises;
+package com.qa.day3.exercises;
 
 public class Person {
 	private String name;
