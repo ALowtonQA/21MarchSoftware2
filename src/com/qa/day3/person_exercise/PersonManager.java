@@ -1,4 +1,4 @@
-package com.qa.day3.exercises;
+package com.qa.day3.person_exercise;
 
 import java.util.ArrayList;
 
