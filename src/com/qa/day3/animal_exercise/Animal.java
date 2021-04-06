@@ -35,6 +35,6 @@ public abstract class Animal {
 	
 	@Override
 	public String toString() {
-		return String.format("This animal is %s, has %i legs and is %s years old.", colour, legs, age);
+		return String.format("This animal is %s, has %i legs and is %i years old.", colour, legs, age);
 	}
 }
