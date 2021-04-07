@@ -37,13 +37,13 @@ public class Garage {
 	public void removeVehicleById(int id) {
 		boolean found = false;
 		Iterator<Vehicle> itr = vehicles.iterator();
-	    while (itr.hasNext()) {
-	      Vehicle vehicle = itr.next();
-	      if (vehicle.getId() == id) {
-	        itr.remove();
-	        found = true;
-	      }
-	    }
+		while (itr.hasNext()) {
+			Vehicle vehicle = itr.next();
+			if (vehicle.getId() == id) {
+				itr.remove();
+				found = true;
+			}
+		}
 		
 		if (found) {
 			System.out.println("\n\nVehicle removed.");
