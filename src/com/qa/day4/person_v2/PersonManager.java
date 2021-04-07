@@ -32,7 +32,7 @@ public class PersonManager {
 	public void search(String name) {
 		int count = 0;
 		for (Person person : this.pplList) {
-			if (person.getName().equals(name)) {
+			if (person.getName().toLowerCase().equals(name.toLowerCase())) {
 				count++;
 				System.out.println("--------Person Found!--------");
 				System.out.println(person);
