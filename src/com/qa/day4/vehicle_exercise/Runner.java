@@ -23,6 +23,9 @@ public class Runner {
 		garage.printAll();
 		garage.emptyGarage();
 		garage.printAll();
-		
+		garage.addVehicle(cOne);
+		garage.printAll();
+		garage.removeVehicle(cOne);
+		garage.printAll();
 	}
 }

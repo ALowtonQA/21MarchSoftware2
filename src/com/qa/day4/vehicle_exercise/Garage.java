@@ -12,6 +12,14 @@ public class Garage {
 		this.vehicles.add(vehicle);
 	}
 	
+	public void removeVehicle(Vehicle v) {
+		if (this.vehicles.remove(v)) {
+			System.out.println("\n\nVehicle removed.");
+		} else {
+			System.out.println("\n\nVehicle not found.");
+		}
+	}
+	
 	public void removeVehiclesByType(Class<?> c) {
 	    List<Vehicle> toRemove = new ArrayList<>();
 	    for (Vehicle v : vehicles) {
