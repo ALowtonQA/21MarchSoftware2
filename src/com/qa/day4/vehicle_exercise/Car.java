@@ -26,4 +26,10 @@ public class Car extends Vehicle {
 	public int getNumOfDoors() {
 		return this.numOfDoors;
 	}
+
+	@Override
+	public double calculateBill() {
+		double cModifier = this.getNumOfDoors() * 10;
+		return 49.99 * cModifier;
+	}
 }

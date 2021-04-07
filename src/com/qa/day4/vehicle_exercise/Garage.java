@@ -2,7 +2,6 @@ package com.qa.day4.vehicle_exercise;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class Garage {
 
@@ -21,13 +20,13 @@ public class Garage {
 	}
 	
 	public void removeVehiclesByType(Class<?> c) {
-	    List<Vehicle> toRemove = new ArrayList<>();
-	    for (Vehicle v : vehicles) {
+	    ArrayList<Vehicle> toRemove = new ArrayList<>();
+	    for (Vehicle v : this.vehicles) {
 	        if (v.getClass() == c) {
 	            toRemove.add(v);
 	        }
 	    }
-	    if (vehicles.removeAll(toRemove)) {
+	    if (this.vehicles.removeAll(toRemove)) {
 	    	System.out.println("\n\nVehicle(s) removed.");
 	    } else {
 	    	System.out.println("\n\nVehicle(s) not found.");
@@ -36,7 +35,7 @@ public class Garage {
 	
 	public void removeVehicleById(int id) {
 		boolean found = false;
-		Iterator<Vehicle> itr = vehicles.iterator();
+		Iterator<Vehicle> itr = this.vehicles.iterator();
 		while (itr.hasNext()) {
 			Vehicle vehicle = itr.next();
 			if (vehicle.getId() == id) {
@@ -54,41 +53,43 @@ public class Garage {
 	
 	public void emptyGarage() {
 		System.out.println("\n\nVehicle(s) removed.");
-		vehicles.clear();
+		this.vehicles.clear();
 	}
 	
-	public void calculateBills() {
-		double costToFix = 0;
-		for (Vehicle vehicle : vehicles) {
-			switch(vehicle.getClass().getSimpleName()) {
-				case "Car":
-					double cModifier = ((Car) vehicle).getNumOfDoors() * 10;
-					costToFix = 49.99 * cModifier;
-					System.out.println("Vehicle ID: " + vehicle.getId() + "\n Cost to fix: " + costToFix);
-					break;
-				case "Van":
-					double vModifier = ((Van) vehicle).getStorageSpace() / 100;
-					costToFix = 99.99 * vModifier;
-					System.out.println("Vehicle ID: " + vehicle.getId() + "\n Cost to fix: " + costToFix);
-					break;
-				case "Motorcycle":
-					costToFix = 39.99 * ((Motorcycle) vehicle).getHandleBarWidth();
-					System.out.println("Vehicle ID: " + vehicle.getId() + "\n Cost to fix: " + costToFix);
-					break;
-				default:
-					costToFix = 99.99;
+	public void getBillById(int id) {
+		for (Vehicle vehicle : this.vehicles) {
+			if (vehicle.getId() == id) {
+				System.out.println("--------------------------------------------------------------------------------------------");
+				System.out.println(String.format("\nVehicle: %s %s\nID: %d\nCost to fix: %.2f", vehicle.getColour(), vehicle.getManufacturer(), id, vehicle.calculateBill()));
+				break;
 			}
 		}
-		System.out.println("-----------------------------");
+	}
+	
+	public void calculateIndividualBills() {
+		for (Vehicle vehicle : this.vehicles) {
+			System.out.println("--------------------------------------------------------------------------------------------");
+			String output = String.format("\nVehicle: %s %s\nID: %d\nCost to fix: %.2f", vehicle.getColour(), vehicle.getManufacturer(), vehicle.getId(), vehicle.calculateBill());
+			System.out.println(output);
+		}
+	}
+	
+	public void calculateTotalBill() {
+		double total = 0;
+		for (Vehicle vehicle : this.vehicles) {
+			total += vehicle.calculateBill();
+		}
+		System.out.println("--------------------------------------------------------------------------------------------");
+		System.out.println("\nThe total bill for all vehicles in the garage is: £" + total);
 	}
 	
 	public void printAll() {
-		System.out.println("\n\n---------------------------------------------------------------------------------------");
-		System.out.println("--------------------------------Full list of vehicles----------------------------------");
-		System.out.println("---------------------------------------------------------------------------------------");
-		for (Vehicle vehicle : vehicles) {
+		System.out.println("\n\n--------------------------------------------------------------------------------------------");
+		System.out.println("--------------------------------Full list of vehicles---------------------------------------");
+		System.out.println("--------------------------------------------------------------------------------------------");
+		for (Vehicle vehicle : this.vehicles) {
 			System.out.println(vehicle);
-			System.out.println("---------------------------------------------------------------------------------------");
+			System.out.println("--------------------------------------------------------------------------------------------");
 		}
 	}
 }

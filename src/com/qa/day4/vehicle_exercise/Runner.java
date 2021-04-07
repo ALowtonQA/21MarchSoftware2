@@ -14,17 +14,25 @@ public class Runner {
 		garage.addVehicle(mOne);
 		garage.addVehicle(vOne);
 		
-		// Method test block
+		// Method test blocks
 		garage.printAll();
-		garage.calculateBills();
+		
+		garage.getBillById(1);
+		garage.calculateIndividualBills();
+		garage.calculateTotalBill();
+		
 		garage.removeVehicleById(1);
 		garage.printAll();
+		
 		garage.removeVehiclesByType(Van.class);
 		garage.printAll();
+		
 		garage.emptyGarage();
 		garage.printAll();
+		
 		garage.addVehicle(cOne);
 		garage.printAll();
+		
 		garage.removeVehicle(cOne);
 		garage.printAll();
 	}

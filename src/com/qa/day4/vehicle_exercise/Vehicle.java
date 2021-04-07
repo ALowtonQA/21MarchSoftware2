@@ -1,6 +1,6 @@
 package com.qa.day4.vehicle_exercise;
 
-public class Vehicle {
+public abstract class Vehicle {
 
 	private String manufacturer;
 	private String colour;
@@ -56,8 +56,13 @@ public class Vehicle {
 		return this.id;
 	}
 	
+	public abstract double calculateBill();
+	
 	@Override
 	public String toString() {
-		return String.format("This vehicle is a %s %s made by %s, with %d wheels and costs %.2f", colour, this.getClass().getSimpleName(), manufacturer, numOfWheels, price);
+		return String.format(
+				"ID: %d | This vehicle is a %s %s made by %s, with %d wheels and costs %.2f", 
+				this.id, this.colour, this.getClass().getSimpleName(), this.manufacturer, this.numOfWheels, this.price
+		);
 	}
 }

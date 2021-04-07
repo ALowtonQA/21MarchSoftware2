@@ -20,4 +20,9 @@ public class Motorcycle extends Vehicle {
 	public void popWheelie() {
 		System.out.println("I should probably never do this again...");
 	}
+
+	@Override
+	public double calculateBill() {
+		return this.getHandleBarWidth() * 39.99;
+	}
 }

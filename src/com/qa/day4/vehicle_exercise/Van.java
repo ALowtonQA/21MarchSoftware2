@@ -16,4 +16,10 @@ public class Van extends Vehicle{
 	public int getStorageSpace() {
 		return this.storageSpace;
 	}
+
+	@Override
+	public double calculateBill() {
+		double vModifier = this.getStorageSpace() / 100;
+		return 99.99 * vModifier;
+	}
 }
