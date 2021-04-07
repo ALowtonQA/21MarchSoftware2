@@ -2,6 +2,7 @@ package com.qa.day4.vehicle_exercise;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Garage {
 
@@ -11,7 +12,21 @@ public class Garage {
 		this.vehicles.add(vehicle);
 	}
 	
-	public void removeVehicle(int id) {
+	public void removeVehiclesByType(Class<?> c) {
+	    List<Vehicle> toRemove = new ArrayList<>();
+	    for (Vehicle v : vehicles) {
+	        if (v.getClass() == c) {
+	            toRemove.add(v);
+	        }
+	    }
+	    if (vehicles.removeAll(toRemove)) {
+	    	System.out.println("\n\nVehicle(s) removed.");
+	    } else {
+	    	System.out.println("\n\nVehicle(s) not found.");
+	    }
+	}
+	
+	public void removeVehicleById(int id) {
 		boolean found = false;
 		Iterator<Vehicle> itr = vehicles.iterator();
 	    while (itr.hasNext()) {
@@ -30,13 +45,14 @@ public class Garage {
 	}
 	
 	public void emptyGarage() {
+		System.out.println("\n\nVehicle(s) removed.");
 		vehicles.clear();
 	}
 	
 	public void calculateBills() {
 		double costToFix = 0;
 		for (Vehicle vehicle : vehicles) {
-			switch(vehicle.getType()) {
+			switch(vehicle.getClass().getSimpleName()) {
 				case "Car":
 					double cModifier = ((Car) vehicle).getNumOfDoors() * 10;
 					costToFix = 49.99 * cModifier;

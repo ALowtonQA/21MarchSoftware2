@@ -7,7 +7,6 @@ public class Car extends Vehicle {
 	
 	public Car(String colour, String manufacturer, int numOfWheels, double price, int id, int numOfDoors, boolean hasSunRoof) {
 		super(colour, manufacturer, numOfWheels, price, id);
-		super.setType("Car");
 		this.numOfDoors = numOfDoors;
 		this.hasSunRoof = hasSunRoof;	
 	}

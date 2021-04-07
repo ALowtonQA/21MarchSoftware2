@@ -4,7 +4,6 @@ public class Vehicle {
 
 	private String manufacturer;
 	private String colour;
-	private String type;
 	private int numOfWheels;
 	private double price;
 	private int id;
@@ -33,10 +32,6 @@ public class Vehicle {
 		this.price = price;
 	}
 	
-	public void setType(String type) {
-		this.type = type;
-	}
-	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -57,20 +52,12 @@ public class Vehicle {
 		return this.price;
 	}
 	
-	public String getType() {
-		return this.type;
-	}
-	
 	public int getId() {
 		return this.id;
 	}
 	
 	@Override
 	public String toString() {
-		if (this.type != null) {
-			return String.format("This vehicle is a %s %s made by %s, with %d wheels and costs %.2f", colour, type, manufacturer, numOfWheels, price);
-		} else {
-			return String.format("This a %s vehicle made by %s, with %d wheels and costs %.2f", colour, manufacturer, numOfWheels, price);
-		}
+		return String.format("This vehicle is a %s %s made by %s, with %d wheels and costs %.2f", colour, this.getClass().getSimpleName(), manufacturer, numOfWheels, price);
 	}
 }

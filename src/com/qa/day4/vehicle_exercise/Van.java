@@ -6,7 +6,6 @@ public class Van extends Vehicle{
 	
 	public Van(String colour, String manufacturer, int numOfWheels, double price, int id, int storageSpace) {
 		super(colour, manufacturer, numOfWheels, price, id);
-		super.setType("Van");
 		this.storageSpace = storageSpace;
 	}
 	

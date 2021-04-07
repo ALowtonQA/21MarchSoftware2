@@ -6,7 +6,6 @@ public class Motorcycle extends Vehicle {
 	
 	public Motorcycle(String colour, String manufacturer, int numOfWheels, double price, int id, int handleBarWidth) {
 		super(colour, manufacturer, numOfWheels, price, id);
-		super.setType("Motorcycle");
 		this.handleBarWidth = handleBarWidth;
 	}
 	

@@ -17,9 +17,12 @@ public class Runner {
 		// Method test block
 		garage.printAll();
 		garage.calculateBills();
-		garage.removeVehicle(1);
+		garage.removeVehicleById(1);
+		garage.printAll();
+		garage.removeVehiclesByType(Van.class);
 		garage.printAll();
 		garage.emptyGarage();
 		garage.printAll();
+		
 	}
 }
