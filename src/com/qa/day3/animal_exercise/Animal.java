@@ -5,7 +5,8 @@ public abstract class Animal {
 	private String colour;
 	private int legs;
 	private int age;
-
+	public static int numOfAnimals;
+	
 	public void setColour(String colour) {
 		this.colour = colour;
 	}
@@ -18,6 +19,9 @@ public abstract class Animal {
 		this.age = age;
 	}
 	
+	public static void setNumOfAnimals(int num) {
+		Animal.numOfAnimals = num;
+	}
 	
 	public String getColour() {
 		return this.colour;
@@ -35,6 +39,6 @@ public abstract class Animal {
 	
 	@Override
 	public String toString() {
-		return String.format("This animal is %s, has %i legs and is %i years old.", colour, legs, age);
+		return String.format("This animal is %s, has %d legs and is %d years old.", colour, legs, age);
 	}
 }

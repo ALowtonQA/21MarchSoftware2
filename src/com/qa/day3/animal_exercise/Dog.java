@@ -1,10 +1,10 @@
 package com.qa.day3.animal_exercise;
 
-public class Cat extends Animal {
-	
+public class Dog extends Animal {
+
 	private String breed;
 	
-	public Cat (String colour, int legs, int age, String breed) {
+	public Dog (String colour, int legs, int age, String breed) {
 		this.setColour(colour);
 		this.setLegs(legs);
 		this.setAge(age);
@@ -21,6 +21,6 @@ public class Cat extends Animal {
 	}
 	
 	public void makeNoise() {
-		System.out.println("Meooooow");
+		System.out.println("Woof");
 	}
 }
