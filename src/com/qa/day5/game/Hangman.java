@@ -2,10 +2,9 @@ package com.qa.day5.game;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Hangman {
-
+	// Got words from random generator online. Find a better way for a larger set.
 	private final String[] DICT = {
 			"bone", "rice", "chemical", "decide", "functional", "festive", "share", "mouth",
 			"manage", "innate", "parched", "rustic", "eatable", "purple", "rabbits", "billowy",
@@ -14,32 +13,15 @@ public class Hangman {
 	};
 	
 	private final Random R = new Random();
-	private final int END = 7;
+	public final int END = 7;
 	private ArrayList<String> lettersEntered = new ArrayList<>();
 	private String chosenWord;
 	private char[] lettersFound;
-	private int errors;
-	
-	public String chooseWord() {
-		int limit = DICT.length;
-		int rng = R.nextInt(limit);
-		return DICT[rng];
-	}
+	public int errors;
 	
 	public boolean isMatch() {
 		String lettersFound = new String(this.lettersFound);
-		return chosenWord.contentEquals(lettersFound);
-	}
-	
-	public void setup() {
-		this.errors = 0;
-		this.lettersEntered.clear();
-		this.chosenWord = chooseWord();
-		this.lettersFound = new char[this.chosenWord.length()];
-		
-		for (int i = 0; i < this.lettersFound.length; i++) {
-			lettersFound[i] = '_';
-		}
+		return this.chosenWord.contentEquals(lettersFound);
 	}
 	
 	public void check(String c) {
@@ -51,27 +33,43 @@ public class Hangman {
 				i = this.chosenWord.indexOf(c, i+1);
 			}
 		} else {
-			this.errors++;
+			this.errors++; // Improve this so that repeated errors don't stack.
 		}
-		lettersEntered.add(c);
+		this.lettersEntered.add(c);
+	}
+
+	public void setChosenWord() {
+		int limit = DICT.length;
+		int rng = R.nextInt(limit);
+		this.chosenWord = DICT[rng];
 	}
 	
-	public void play() {
-		Scanner s = new Scanner(System.in);
-		while (errors < END) {
-			System.out.println("Enter a letter: ");
-			String input = (s.next().length() > 1)? s.next().substring(0, 1) : s.next();
-			check(input);
-			System.out.println(lettersFound.toString());
-			
-			if (isMatch()) {
-				System.out.println("Correct! You win!");
-				break;
-			} else {
-				System.out.println("You have " + (END - errors) + " lives remaining.");
-				continue;
-			}
-			
+	public void setLettersFound() {
+		this.lettersFound = new char[this.chosenWord.length()];
+		for (int i = 0; i < this.lettersFound.length; i++) {
+			lettersFound[i] = '_';
 		}
+	}
+
+	public void clearLettersEntered() {
+		this.lettersEntered.clear();
+	}
+	
+	public String getChosenWord() {
+		return this.chosenWord;
+	}
+	
+	public char[] getLettersFound() {
+		return this.lettersFound;
+	}
+	
+	public String getLettersFoundFormatted() {
+		StringBuilder output = new StringBuilder();
+		for (int i = 0; i < this.lettersFound.length; i++) {
+			output.append(this.lettersFound[i]);
+			if (i < this.lettersFound.length - 1)
+				output.append(" ");
+		}
+		return output.toString();
 	}
 }
